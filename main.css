@@ -12,6 +12,11 @@ h1
 	color: violet;
 	text-decoration: underline;
 }
+/*classes*/
+.center
+{
+	text-align: center;
+}
 /*animations*/
 .fadein
 {
