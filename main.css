@@ -5,35 +5,33 @@ body
 *
 {
 	color: azure;
-	font-family: Arial;
+	font-family: AriaL;
 }
-h1
+h1, h2, h3, h4
 {
-	color: violet;
-	text-decoration: underline;
+	transition: color 0.5s;
 }
-/*classes*/
-.center
+h1:hover, h2:hover, h3:hover, h4:hover
 {
-	text-align: center;
+	color: aquamarine;
 }
-/*animations*/
-.fadein
+a
 {
-	animation-name: fade-in;
-	animation-duration: 0.5s;
-	animation-fill-mode: both;
+	transition: color 0.5s;
 }
-@keyframes fade-in
+a:hover
 {
-	from
-	{
-		opacity: 0;
-	}
-	to
-	{
-		opacity: 1;
-	}
+	color: yellow;
+	text-decoration: inherit;
+}
+.spoiler
+{
+	filter: blur(5px);
+	transition: filter 1s;
+}
+.spoiler:hover
+{
+	filter: blur(0px);
 }
 .fadeout
 {
