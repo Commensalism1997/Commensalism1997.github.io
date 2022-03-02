@@ -24,6 +24,14 @@ a:hover
 	color: yellow;
 	text-decoration: inherit;
 }
+textarea
+{
+	background-color: black;
+}
+button
+{
+	background-color: black;
+}
 .spoiler
 {
 	filter: blur(5px);
