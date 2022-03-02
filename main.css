@@ -1,6 +1,7 @@
 body
 {
-	background-image: linear-gradient(151deg, black, #101010);
+	background-image: linear-gradient(0deg, black, #101010);
+	background-attachment: fixed;
 }
 *
 {
