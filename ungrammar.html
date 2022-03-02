@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>ungrammar</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="/main.css">
+    </head>
+    <body>
+        <header>
+            <h1 class="center">imagine using grammar on internet</h1>
+        </header>
+        <textarea placeholder="put here" id="inputtext" style="width: 250px; height: 150px; margin: 5px;"></textarea>
+        <br>
+        <input type="checkbox" id="commas" style="margin: 5px;">
+        <label for="commas">Delete commas?</label>
+        <br>
+        <button id="go" style="margin: 5px;">let's go</button>
+        <br>
+        <div style="background-color: #000055; border-style: double; border-radius: 5px; border-color: blue; width: 250px; height: 150px; margin: 5px; padding: 5px;">
+            <output id="result"></output>
+		</div>
+        <script>
+            let button = document.querySelector("#go")
+            let input = document.querySelector("#inputtext")
+            let commas = document.querySelector("#commas")
+            let result = document.querySelector("#result")
+            button.addEventListener("click", function()
+            {
+                if (!commas.checked)
+                {
+                    result.textContent = input.value.replace(/\./g, "").toLowerCase()
+                }
+                else
+                {
+                    result.textContent = input.value.replace(/[\.\,]/g, "").toLowerCase()
+                }
+            })
+        </script>
+    </body>
+</html>
