@@ -15,8 +15,8 @@
         </header>
         <textarea placeholder="put here" id="inputtext" style="width: 250px; height: 150px; margin: 5px;"></textarea>
         <br>
-        <input type="checkbox" id="commas" style="margin: 5px;">
-        <label for="commas">Delete commas?</label>
+        <input type="checkbox" id="dots" style="margin: 5px;">
+        <label for="dots">Delete dots?</label>
         <br>
         <button id="go" style="margin: 5px;">let's go</button>
         <br>
@@ -26,13 +26,13 @@
         <script>
             let button = document.querySelector("#go")
             let input = document.querySelector("#inputtext")
-            let commas = document.querySelector("#commas")
+            let dots = document.querySelector("#dots")
             let result = document.querySelector("#result")
             button.addEventListener("click", function()
             {
-                if (!commas.checked)
+                if (!dots.checked)
                 {
-                    result.textContent = input.value.replace(/\./g, "").toLowerCase()
+                    result.textContent = input.value.replace(/\,/g, "").toLowerCase()
                 }
                 else
                 {
