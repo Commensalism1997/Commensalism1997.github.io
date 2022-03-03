@@ -32,11 +32,11 @@
             {
                 if (!dots.checked)
                 {
-                    result.textContent = input.value.replace(/\,/g, "").toLowerCase()
+                    result.textContent = input.value.replace(/[\,\']/g, "").toLowerCase()
                 }
                 else
                 {
-                    result.textContent = input.value.replace(/[\.\,]/g, "").toLowerCase()
+                    result.textContent = input.value.replace(/[\.\,\']/g, "").toLowerCase()
                 }
             })
         </script>
