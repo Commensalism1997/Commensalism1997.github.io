@@ -52,6 +52,15 @@ button
 	animation-duration: 0.5s;
 	animation-fill-mode: both;
 }
+.infopanel
+{
+	background-color: #000055;
+	border-style: double;
+	border-radius: 5px;
+	border-color: blue;
+	margin: 5px;
+	padding: 5px;
+}
 @keyframes fade-out
 {
 	from
