@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Minitoon Image Converter</title>
+		<meta charset="utf-8">
+		<meta property="og:title" content="Minitoon Image Converter">
+		<meta property="og:type" content="website">
+		<link rel="stylesheet" href="/main.css">
+		<script type="text/javascript" src="/lib/zip.min.js"></script>
+	</head>
+	<body>
+		<div style="height: 100px;">
+			<div style="width: 300px; height: 100px; left: 50%; margin-left: -150px; position: absolute; border: solid 2px green; padding: 5px;">
+				<input type="file" id="imagefile" accept="image/x-png">
+				<br>
+				<button id="goconvert" onclick="convert()" style="margin-top: 5px; width: calc(100% - 10px); height: 50%; position: absolute; bottom: 5px;">Convert</button>
+			</div>
+		</div>
+		<h3>step 1</h3>
+		<p>go to the <a href="https://minitoon.me/draw">minitoon drawing page</a></p>
+		<h3>step 2</h3>
+		<p>click "download" or "publish" in the upper right corner</p>
+		<img src="tutorial/step2.png">
+		<h3>step 3</h3>
+		<p>click "load zip" on the sidebar</p>
+		<img src="tutorial/step3.png">
+		<h3>step 4</h3>
+		<p>select the converted zip in the file picker</p>
+		<img src="tutorial/step4.png">
+		<script>
+			function convert()
+			{
+				let input = document.querySelector("#imagefile")
+				if (input.files.length > 0)
+				{
+					let imageFile = input.files[0]
+					let imageReader = new FileReader();
+					imageReader.onload = function()
+					{
+						let image = new Image()
+						image.onload = async function()
+						{
+							let zipFileWriter = new zip.BlobWriter()
+							let width = image.width
+							let height = image.height
+							let settingsReader = new zip.TextReader(`{"ps":{"0":{"w":${width},"h":${height},"layers":[{"t":"bg","k":"bg","n":"Background","c":"rgba(255,255,255,1)"},{"t":"draw","k":"color","n":"Color Layer","f":{"w":${width},"h":${height},"x":0,"y":0}},{"t":"draw","k":"main","n":"Main Layer","f":{"w":${width},"h":${height},"x":0,"y":0}},{"t":"text","k":"text","n":"Text Layer","fab":"{\\"version\\":\\"5.3.0\\",\\"objects\\":[]}"}]}},"w":${width},"h":${height},"pn":1}`)
+							let layerReader = new zip.BlobReader(imageFile)
+							let zipWriter = new zip.ZipWriter(zipFileWriter)
+							await zipWriter.add("settings.dat", settingsReader)
+							await zipWriter.add("0-main.png", layerReader)
+							let zipBlob = await zipWriter.close()
+							let blobURL = URL.createObjectURL(zipBlob)
+							let link = document.createElement("a")
+							link.href = blobURL
+							link.download = "converted.zip"
+							link.click()
+							link.remove()
+						}
+						image.src = imageReader.result
+					}
+					imageReader.readAsDataURL(imageFile)
+				}
+			}
+		</script>
+	</body>
+</html>
