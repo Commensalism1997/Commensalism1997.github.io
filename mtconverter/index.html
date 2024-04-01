@@ -16,6 +16,7 @@
 				<button id="goconvert" onclick="convert()" style="margin-top: 5px; width: calc(100% - 10px); height: 50%; position: absolute; bottom: 5px;">Convert</button>
 			</div>
 		</div>
+		<p><span style="color: red;">WARNING: maximum possible resolution for a minitoon image is 2000x2000. anything bigger will be cropped to 2000x2000</span></p>
 		<h3>step 1</h3>
 		<p>go to the <a href="https://minitoon.me/draw">minitoon drawing page</a></p>
 		<h3>step 2</h3>
@@ -41,8 +42,8 @@
 						image.onload = async function()
 						{
 							let zipFileWriter = new zip.BlobWriter()
-							let width = image.width
-							let height = image.height
+							let width = Math.min(image.width, 2000)
+							let height = Math.min(image.height, 2000)
 							let settingsReader = new zip.TextReader(`{"ps":{"0":{"w":${width},"h":${height},"layers":[{"t":"bg","k":"bg","n":"Background","c":"rgba(255,255,255,1)"},{"t":"draw","k":"color","n":"Color Layer","f":{"w":${width},"h":${height},"x":0,"y":0}},{"t":"draw","k":"main","n":"Main Layer","f":{"w":${width},"h":${height},"x":0,"y":0}},{"t":"text","k":"text","n":"Text Layer","fab":"{\\"version\\":\\"5.3.0\\",\\"objects\\":[]}"}]}},"w":${width},"h":${height},"pn":1}`)
 							let layerReader = new zip.BlobReader(imageFile)
 							let zipWriter = new zip.ZipWriter(zipFileWriter)
