@@ -6,6 +6,21 @@
 		<meta property="og:title" content="interactive gpop iceberg">
 		<meta property="og:type" content="website">
 		<link rel="stylesheet" href="/main.css">
+        <script>
+            function kagurabachi()
+            {
+                alert("As I was climbing the mount Everest, my instructor asked at what height I was, and I yelled out \"Kagurabachi!\"\nHe smiled, knowing I had reached the peak.")
+                document.title = "kagurabachi"
+                var link = document.querySelector("link[rel~='icon']");
+                if (!link)
+                {
+                    link = document.createElement('link');
+                    link.rel = 'icon';
+                    document.head.appendChild(link);
+                }
+                link.href = 'chihiro.ico';
+            }
+        </script>
     </head>
     <body>
         <header><h1>click on text for explantation</h1><h2>credits: ruim (layers 1-2), commensalism (layer 3), xer0 (layers 4-6)</h2></header>
@@ -13,6 +28,7 @@
         <map name="icemap">
             <area shape="rect" coords="110, 80, 390, 120" onclick="alert('minitoon, bandit.rip, bunktown, all are browser games created by the creator of gpop')"> <!--tears other games-->
             <area shape="rect" coords="600, 90, 790, 120" onclick="alert('gpop settings page (which a lot of people miss and end up asking in the discord where it is)')"> <!--settings page-->
+            <area shape="rect" coords="820, 30, 990, 75" onclick="kagurabachi()"> <!--kagurabachi-->
             <area shape="rect" coords="900, 130, 980, 160" onclick="alert('textism for &quot;guys&quot; that came from BTMC streams and started being used in the gpop discord server')"> <!--gyze-->
             <area shape="poly" coords="1080, 190, 1075, 240, 1780, 130, 2045, 85, 2050, 30, 1800, 30, 1320, 70" onclick="alert('game/anime that is often talked about in the discord server')"> <!--fandoms-->
             <area shape="rect" coords="475, 205, 535, 235" onclick="alert('friday night funkin, rhythm game that brought many new people to gpop')"> <!--fnf-->
