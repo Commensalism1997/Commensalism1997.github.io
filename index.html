@@ -6,8 +6,43 @@
 		<meta property="og:title" content="Commensalism">
 		<meta property="og:type" content="website">
 		<link rel="stylesheet" href="/main.css">
+		<style>
+			.hidden
+			{
+				margin-left: -55px;
+			}
+			.shown
+			{
+				margin-left: 0px;
+			}
+		</style>
 	</head>
 	<body>
-		<img src="https://cdn.discordapp.com/emojis/1034849554471866378.webp">
+		<img src="https://cdn.discordapp.com/emojis/1034849554471866378.webp" id="folou">
+		<div><img src="https://cdn.discordapp.com/emojis/1246219121700638873.webp?size=1024" style="width: 50px; height: 50px; transition: margin-left 1s;" class="hidden" id="gpopiceberg"></div>
+		<div><img src="https://cdn.discordapp.com/icons/1063877242712772718/40ae7d5b86b015d3c5768677df37dd58.webp?size=1024" style="width: 50px; height: 50px; transition: margin-left 1s;" class="hidden" id="mtconverter"></div>
+		<script>
+			let opened = false
+			document.querySelector("#folou").addEventListener("click", function()
+			{
+				let gpop = document.querySelector("#gpopiceberg")
+				let mt = document.querySelector("#mtconverter")
+				if (opened)
+				{
+					gpop.className = "hidden"
+					gpop.onclick = null
+					mt.className = "hidden"
+					mt.onclick = null
+				}
+				else
+				{
+					gpop.className = "shown"
+					gpop.onclick = () => window.location.href = "/gpopiceberg"
+					mt.className = "shown"
+					mt.onclick = () => window.location.href = "/mtconverter"
+				}
+				opened = !opened
+			})
+		</script>
 	</body>
 </html>
